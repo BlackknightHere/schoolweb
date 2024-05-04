@@ -1,56 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { handleUpdateStock } from "../../../controllers/submitController";
+// import { handleUpdateStock } from "../../../controllers/submitController";
 import { handleDeleteItem } from "../../../controllers/deleteController";
 
-const Card = ({ item }) => {
-  const [count, setCount] = useState(item.instock);
-  const id = item.i_id;
+const Card = ({ student }) => {
+  // const [count, setCount] = useState(item.instock);
+  const id = student.student_id;
 
-  const clickAdd = () => {
-    setCount(count + 1);
-  };
+  // const clickAdd = () => {
+  //   setCount(count + 1);
+  // };
 
-  const clickMi = () => {
-    setCount(count - 1);
-  };
+  // const clickMi = () => {
+  //   setCount(count - 1);
+  // };
 
   const clickDelete = () => {
-    try{
-      handleDeleteItem(item.i_id, item.name)
-    }catch(err){
-      console.log(err)
+    try {
+      handleDeleteItem(student.student_id, student.student_name);
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
-  useEffect(() => {
-    handleUpdateStock(item, count);
-  }, [count]);
+  // useEffect(() => {
+  //   handleUpdateStock(student, count);
+  // }, [count]);
 
   return (
     <div className="card">
       <div className="imgBox">
-        <img src={item.photoURL} />
+        <img src={student.photoURL} />
       </div>
       <div className="itemDetails">
         <h2>
-          {item.name}
+          {student.student_name}
           <br />
-          <span>{item.i_collection}</span>
         </h2>
-        <h3>
-          {item.price} Baht
-          <br />
-        </h3>
-        <p>in stock: {count}</p>
+        <h3>ID: {student.student_id}</h3>
+        <h3>Score: {student.student_score}</h3>
+        <h4>Section: {student.section_id} </h4>
         <div className="buttons">
-          <button className="ad" onClick={clickAdd}>
+          {/*<button className="ad">
             +
           </button>
-          <button className="mi" onClick={clickMi}>
+          <button className="mi">
             -
           </button>
-          {/*<button className="editBtn">Edit</button>*/}
-          <button className="deleteBtn" onClick={clickDelete}>Delete</button>
+          <button className="editBtn">Edit</button>*/}
+          <button className="deleteBtn" onClick={clickDelete}>
+            Delete
+          </button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-import { DeleteItem } from "../models/models";
+import { Delete, DeleteItem } from "../models/models";
 
-export const handleDeleteItem = (id,name) => {
+export const handleDeleteItem = (id ,name) => {
   DeleteItem(id);
-  DeleteImg(name);
+  Delete(name);
   //window.location.reload();
 };

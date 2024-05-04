@@ -1,6 +1,6 @@
-import AddItem from "./pages/AddItem";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import CreateStudent from "./pages/CreateStudent";
 import "./style.scss";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
-          <Route path="additem" element={<AddItem />} />
+          <Route path="createstudent" element={<CreateStudent />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,36 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../models/firebase";
 import Card from "./Card";
 
 const CardsContainer = () => {
-  const [items, setItems] = useState([]);
-  const itemsRef = collection(db, "items");
-  //const ref = useRef();
-
-  /*
-  useEffect(() => {
-    const getItems = async () => {
-      const data = await getDocs(itemsRef);
-      setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getItems();
-  }, []);
-  */
+  const [students, setStudents] = useState([]);
+  const studentRef = collection(db, "students");
 
   useEffect(() => {
     const fetchData = async () => {
       let list = [];
 
       try {
-        const querySnapshot = await getDocs(collection(db, "items"));
+        const querySnapshot = await getDocs(collection(db, "students"));
         querySnapshot.forEach((doc) => {
           list.push(doc);
+          // เมื่อ list เปลี่ยน เริ่มทำงาน useeffect 
         });
-        const data = await getDocs(itemsRef);
-        setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.i_id })));
-      } catch (err) {
+        const data = await getDocs(studentRef);
+        setStudents(data.docs.map((doc) => ({ ...doc.data(), id: doc.student_id })));      } catch (err) {
         console.log(err);
       }
     };
@@ -40,8 +28,8 @@ const CardsContainer = () => {
 
   return (
     <div className="cardscontainer">
-      {items.map((i) => (
-        <Card item={i} key={i.i_id} />
+      {students.map((s) => (
+        <Card student={s} key={s.student_id} />
       ))}
     </div>
   );

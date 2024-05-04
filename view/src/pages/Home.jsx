@@ -7,15 +7,20 @@ const Home = () => {
     <div className="home">
       <div className="container">
         <header>
-          <div className="title">Home</div>
-          <button className="Newbutton">
-            <Link className="addbutton" to="/additem">
+          <div className="title">STUDENT MANAGE</div>
+          {/* <button className="Newbutton">
+            <Link className="addbutton" to="/createstudent">
               Add +
             </Link>
-          </button>
+          </button> */}
         </header>
         <div className="content">
           <CardsContainer />
+          <div className="Newbutton">
+            <Link className="addbutton" to="/createstudent">
+              Add +
+            </Link>
+          </div>
         </div>
       </div>
     </div>

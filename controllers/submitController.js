@@ -1,18 +1,12 @@
-import { UpdateStock, createItem } from "../models/models";
-import { v4 as uuid } from "uuid";
+import { createStudent } from "../models/models";
 
-export const handlesSubmitItem = async (nme, colec, prce, countStck, fle) => {
+export const handlesSubmitStudent = async (name, id, sect, score, fle) => {
   let item = {
-    _id: uuid(),
-    name: nme,
-    item_collection: colec,
-    price: prce,
-    countStock: countStck,
+    studentName: name,
+    studentId: id,
+    studentSect: sect,
+    studentScore: score,
     file: fle,
   };
-  await createItem(item);
-};
-
-export const handleUpdateStock = async (item, count) => {
-  UpdateStock(item, count)
+  await createStudent(item);
 };
